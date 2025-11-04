@@ -1,65 +1,112 @@
-import Image from "next/image";
+import { AboutSection } from "./components/AboutSection";
+import { BackToTopLink } from "./components/BackToTopLink";
+import { Header } from "./components/Header";
+import { HeroIntro } from "./components/HeroIntro";
+import { HeroVideo } from "./components/HeroVideo";
+import { ServicesSection } from "./components/ServicesSection";
+import { SiteFooter } from "./components/SiteFooter";
+import { TeamSection } from "./components/TeamSection";
+import {
+  IconCad,
+  IconCog,
+  IconLaptop,
+  IconQuote,
+  IconWindows,
+} from "./components/icons";
+import type { NavigationItem, Service } from "./components/types";
+
+const navigation: NavigationItem[] = [
+  { label: "Home", href: "#home" },
+  { label: "About us", href: "#about" },
+  { label: "Our services", href: "#services" },
+  { label: "Our team", href: "#team" },
+  { label: "Contact", href: "#contact" },
+];
+
+const services: Service[] = [
+  {
+    title: "CAD/CAM Technical support",
+    description:
+      "At bhCAD, we pride ourselves on providing top-notch CAD/CAM technical support, which includes 2D and 3D drawing services and machine element programming.",
+    icon: IconCad,
+  },
+  {
+    title: "Technical consulting and support",
+    description:
+      "Our technical support encompasses essential consulting services to enhance your business operations.",
+    icon: IconLaptop,
+  },
+  {
+    title: "Quoting",
+    description:
+      "In sheet metal quoting, optimizing price involves minimizing costs through maximal plate usability, ensuring competitive pricing without compromising quality or delivery.",
+    featured: true,
+    icon: IconQuote,
+  },
+  {
+    title: "Enginering",
+    description:
+      "At bhCAD, we pride ourselves on providing top-notch CAD/CAM technical support, which includes 2D and 3D drawing services and machine element programming.",
+    icon: IconCog,
+  },
+  {
+    title: "Business administration",
+    description:
+      "We specialize in streamlining your administrative tasks, allowing you to focus on what truly matters – growing your business.",
+    icon: IconWindows,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="flex min-h-screen flex-col bg-base text-base-foreground">
+      <Header navigation={navigation} />
+
+      <main className="flex flex-1 flex-col">
+        <HeroVideo
+          id="home"
+          badge="Bosnia and Herzegovina"
+          description="Strategically located to serve European manufacturers with agile, cost-effective solutions."
+          videoSrc="/assets/hero-video.mp4"
+          posterSrc="/assets/hero-background.png"
+          videoType="video/mp4"
+          offset={80}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <HeroIntro
+          backgroundImage="/assets/hero-background.png"
+          eyebrow="Technical Consultancy Bureau"
+          heading="We go the extra mile!"
+          description="Your flexible and reliable partner providing online services and the workforce you struggle to find."
+        />
+
+        <AboutSection
+          id="about"
+          heading="About us"
+          subheading="Your trusted partner from Bosnia and Herzegovina"
+          description="We are a multidisciplinary team delivering reliable remote support across engineering, administration, and production planning. Our hybrid setup lets us blend European manufacturing expertise with fast, responsive collaboration tailored to your workflow."
+        />
+
+        <ServicesSection
+          id="services"
+          services={services}
+          eyebrow="Services"
+          heading="We go the extra mile!"
+          description="Our dedicated team of experts is here to streamline your operations, enhance your technological capabilities, and drive your business forward."
+          ctaLabel="Click here"
+          ctaHref="#contact"
+        />
+
+        <TeamSection
+          id="team"
+          eyebrow="Our team"
+          heading="Skilled professionals aligned with your goals"
+          description="From designers and machinists to planners and administrators, our people integrate seamlessly with client teams, communicating in English and German across all time zones."
+        />
       </main>
+
+      <SiteFooter id="contact" email="info@bhcad.ba" />
+
+      <BackToTopLink target="#home" />
     </div>
   );
 }
