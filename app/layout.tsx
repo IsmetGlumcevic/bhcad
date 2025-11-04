@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Karla, Rubik } from "next/font/google";
+import { Karla, Oswald, Rubik } from "next/font/google";
 import "./globals.css";
 
 const karla = Karla({
@@ -10,6 +10,12 @@ const karla = Karla({
 const rubik = Rubik({
   subsets: ["latin"],
   variable: "--font-rubik",
+  weight: ["400", "500", "600", "700"],
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
   weight: ["400", "500", "600", "700"],
 });
 
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${karla.variable} ${rubik.variable} antialiased bg-base text-base-foreground`}
+        className={`${karla.variable} ${rubik.variable} ${oswald.variable} antialiased bg-base text-base-foreground`}
       >
         {children}
       </body>

@@ -6,7 +6,7 @@ type LogoProps = {
 };
 
 export function Logo({ className, priority }: LogoProps) {
-  const classes = ["h-20", "w-auto", "object-contain"];
+  const classes = ["h-[70px]", "w-auto", "object-contain"];
   if (className) classes.push(className);
 
   return (

@@ -1,11 +1,9 @@
-import { AboutSection } from "./components/AboutSection";
 import { BackToTopLink } from "./components/BackToTopLink";
 import { Header } from "./components/Header";
 import { HeroIntro } from "./components/HeroIntro";
 import { HeroVideo } from "./components/HeroVideo";
 import { ServicesSection } from "./components/ServicesSection";
 import { SiteFooter } from "./components/SiteFooter";
-import { TeamSection } from "./components/TeamSection";
 import {
   IconCad,
   IconCog,
@@ -40,7 +38,7 @@ const services: Service[] = [
     title: "Quoting",
     description:
       "In sheet metal quoting, optimizing price involves minimizing costs through maximal plate usability, ensuring competitive pricing without compromising quality or delivery.",
-    featured: true,
+    featured: false,
     icon: IconQuote,
   },
   {
@@ -78,14 +76,6 @@ export default function Home() {
           heading="We go the extra mile!"
           description="Your flexible and reliable partner providing online services and the workforce you struggle to find."
         />
-
-        <AboutSection
-          id="about"
-          heading="About us"
-          subheading="Your trusted partner from Bosnia and Herzegovina"
-          description="We are a multidisciplinary team delivering reliable remote support across engineering, administration, and production planning. Our hybrid setup lets us blend European manufacturing expertise with fast, responsive collaboration tailored to your workflow."
-        />
-
         <ServicesSection
           id="services"
           services={services}
@@ -94,13 +84,6 @@ export default function Home() {
           description="Our dedicated team of experts is here to streamline your operations, enhance your technological capabilities, and drive your business forward."
           ctaLabel="Click here"
           ctaHref="#contact"
-        />
-
-        <TeamSection
-          id="team"
-          eyebrow="Our team"
-          heading="Skilled professionals aligned with your goals"
-          description="From designers and machinists to planners and administrators, our people integrate seamlessly with client teams, communicating in English and German across all time zones."
         />
       </main>
 

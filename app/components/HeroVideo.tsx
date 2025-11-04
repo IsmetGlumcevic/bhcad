@@ -47,15 +47,6 @@ export function HeroVideo({
         </video>
         <div className={`absolute inset-0 bg-gradient-to-b ${overlayGradient}`} />
       </div>
-
-      <div className="relative mx-auto flex h-full min-h-[320px] max-w-6xl items-end px-4 py-16 md:min-h-[380px] md:px-6 md:py-24 lg:px-8">
-        <div className="flex flex-col gap-4">
-          <p className="inline-flex w-fit items-center rounded-full border border-white/30 px-4 py-1 text-xs font-heading uppercase tracking-[0.35em]">
-            {badge}
-          </p>
-          <p className="max-w-xl text-base text-white/80 md:text-lg">{description}</p>
-        </div>
-      </div>
     </section>
   );
 }

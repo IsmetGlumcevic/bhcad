@@ -21,7 +21,7 @@
   --color-base: var(--background);
   --color-base-foreground: var(--foreground);
   --font-sans: var(--font-karla);
-  --font-heading: var(--font-rubik);
+  --font-heading: var(--font-oswald);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,8 +45,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-rubik), var(--font-karla), Arial, Helvetica, sans-serif;
-  color: var(--foreground);
+  font-family: var(--font-oswald), "Oswald", var(--font-rubik), Arial, Helvetica,
+    sans-serif;
 }
 
 a {

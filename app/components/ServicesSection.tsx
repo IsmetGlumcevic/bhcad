@@ -26,7 +26,7 @@ export function ServicesSection({
       className="bg-white py-20 md:py-24 lg:py-28"
       aria-labelledby={`${id ?? "services"}-heading`}
     >
-      <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-5xl font-heading uppercase tracking-[0.35em] text-primary">
             {eyebrow}
@@ -47,7 +47,7 @@ export function ServicesSection({
               <article
                 key={title}
                 className={[
-                  "flex h-full flex-col gap-5 rounded-3xl border border-surface bg-white p-8 shadow-sm transition-shadow",
+                  "flex h-full flex-col items-center gap-5 border border-surface hover:bg-white p-10 text-center hover:shadow-2xl transition-shadow",
                   "md:col-span-1",
                   spanClass,
                   featuredClass,

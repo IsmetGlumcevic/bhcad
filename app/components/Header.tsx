@@ -9,10 +9,10 @@ type HeaderProps = {
 export function Header({ navigation }: HeaderProps) {
   return (
     <header className="relative z-20 bg-gradient-to-r from-[#5c8a72] via-[#5bb59f] to-[#6ce0cc] text-white shadow-lg">
-      <div className="mx-auto flex h-24 max-w-6xl items-center justify-between px-4 md:px-6 lg:px-8">
+      <div className="mx-auto flex h-[100px] max-w-7xl items-center justify-between px-4 md:px-6 lg:px-0">
         <Logo priority />
         <nav aria-label="Primary">
-          <ul className="hidden items-center gap-8 text-xs font-heading uppercase tracking-[0.35em] md:flex">
+          <ul className="hidden items-center gap-8 text-[17px] font-heading uppercase md:flex">
             {navigation.map(({ label, href }) => (
               <li key={label}>
                 <Link
@@ -27,7 +27,7 @@ export function Header({ navigation }: HeaderProps) {
           </ul>
         </nav>
       </div>
-      <div className="mx-auto block w-full max-w-6xl px-4 pb-4 md:hidden">
+      <div className="mx-auto block w-full max-w-7xl px-4 pb-4 md:hidden">
         <nav aria-label="Primary mobile">
           <ul className="flex items-center gap-4 overflow-x-auto whitespace-nowrap text-[0.65rem] font-heading uppercase tracking-[0.35em]">
             {navigation.map(({ label, href }) => (
