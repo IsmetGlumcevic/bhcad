@@ -77,10 +77,11 @@ export default function ContactPage() {
                   <div className="mt-3 overflow-hidden rounded-xl bg-white/90 shadow-2xl ring-1 ring-black/10">
                     <iframe
                       title="bhCAD location"
-                      src="https://www.google.com/maps?ll=44.202985,17.907168&z=18&t=m&hl=bs&gl=US&mapclient=embed&q=%C5%A0kolska+10+Zenica+72000"
+                      src="https://www.google.com/maps?q=%C5%A0kolska%2010%2C%20Zenica%2072000&z=18&output=embed&hl=bs"
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                       className="h-56 w-full"
+                      allowFullScreen
                     />
                   </div>
                 </div>
@@ -88,24 +89,19 @@ export default function ContactPage() {
                 <div className="pt-2">
                   <div className="text-xl font-semibold">Follow us</div>
                   <div className="mt-3 flex items-center gap-4">
-                    <a aria-label="Facebook" href="https://www.facebook.com/profile.php?id=61561074453074" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-emerald-700 shadow ring-1 ring-black/10">
+                    <a aria-label="Facebook" href="https://www.facebook.com/profile.php?id=61561074453074" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-emerald-700 shadow ring-1 ring-black/10">
                       <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
                         <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.16 1.8.16v2h-1c-1 0-1.3.62-1.3 1.26V12h2.2l-.35 3h-1.85v7A10 10 0 0 0 22 12"/>
                       </svg>
                     </a>
-                    <a aria-label="Instagram" href="https://www.instagram.com/bh_cad/" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-emerald-700 shadow ring-1 ring-black/10">
+                    <a aria-label="Instagram" href="https://www.instagram.com/bh_cad/" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-emerald-700 shadow ring-1 ring-black/10">
                       <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
                         <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m5 5.8A4.2 4.2 0 1 0 16.2 12 4.2 4.2 0 0 0 12 7.8m6.5-.8a1.2 1.2 0 1 0 1.2 1.2A1.2 1.2 0 0 0 18.5 7m-6.5 2.2A2 2 0 1 1 10 11.2 2 2 0 0 1 12 9.2z"/>
                       </svg>
                     </a>
-                    <a aria-label="LinkedIn" href="https://www.linkedin.com/in/bh-cad-a43089266/?originalSubdomain=ba" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-emerald-700 shadow ring-1 ring-black/10">
+                    <a aria-label="LinkedIn" href="https://www.linkedin.com/in/bh-cad-a43089266/?originalSubdomain=ba" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-emerald-700 shadow ring-1 ring-black/10">
                       <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
                         <path d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3zM8.34 18.34V9.66H6V18.34H8.34zM7.17 8.5A1.67 1.67 0 1 0 5.5 6.83 1.67 1.67 0 0 0 7.17 8.5zM18.34 18.34V13.8c0-2.62-1.4-3.84-3.27-3.84a2.84 2.84 0 0 0-2.56 1.4h-.05V9.66H10.2c.03.88 0 8.68 0 8.68h2.26v-4.86a2.1 2.1 0 0 1 .1-.75 1.86 1.86 0 0 1 1.73-1.23c1.22 0 1.71.92 1.71 2.28v4.56z"/>
-                      </svg>
-                    </a>
-                    <a aria-label="YouTube" href="#" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-emerald-700 shadow ring-1 ring-black/10">
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
-                        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2C0 8 0 12 0 12s0 4 .5 5.8a3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 16 24 12 24 12s0-4-.5-5.8zM9.6 15.5V8.5l6.4 3.5z"/>
                       </svg>
                     </a>
                   </div>
