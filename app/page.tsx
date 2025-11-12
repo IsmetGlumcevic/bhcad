@@ -15,7 +15,7 @@ import type { NavigationItem, Service } from "./components/types";
 
 const navigation: NavigationItem[] = [
   { label: "Home", href: "#home" },
-  { label: "About us", href: "#about" },
+  { label: "About us", href: "/about" },
   { label: "Our services", href: "#services" },
   { label: "Our team", href: "#team" },
   { label: "Contact", href: "#contact" },
