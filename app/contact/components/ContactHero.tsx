@@ -37,12 +37,23 @@ export function ContactHero({ details, socialLinks }: ContactHeroProps) {
             </p>
           </header>
 
-          <div className="space-y-4 text-white">
-            <EmailBlock email={details.email} />
-            <PhoneBlock phone={details.phone} />
-            <AddressBlock address={details.address} mapEmbedUrl={details.mapEmbedUrl} />
+          <section
+            aria-labelledby="contact-details-heading"
+            className="space-y-6 text-white"
+          >
+            <h2
+              id="contact-details-heading"
+              className="text-2xl font-heading font-semibold text-white"
+            >
+              Contact information
+            </h2>
+            <dl className="space-y-4 text-white">
+              <EmailBlock email={details.email} />
+              <PhoneBlock phone={details.phone} />
+              <AddressBlock address={details.address} mapEmbedUrl={details.mapEmbedUrl} />
+            </dl>
             <SocialLinks links={socialLinks} />
-          </div>
+          </section>
         </div>
       </div>
     </section>
@@ -54,18 +65,20 @@ type EmailBlockProps = { email: string };
 function EmailBlock({ email }: EmailBlockProps) {
   return (
     <div>
-      <div className="flex items-center gap-3 text-xl font-semibold">
+      <dt className="flex items-center gap-3 text-xl font-semibold">
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden>
           <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z" />
         </svg>
         E-mail
-      </div>
-      <a
-        href={`mailto:${email}`}
-        className="mt-1 block text-white/90 underline decoration-white/40 underline-offset-4 hover:decoration-white"
-      >
-        {email}
-      </a>
+      </dt>
+      <dd>
+        <a
+          href={`mailto:${email}`}
+          className="mt-1 block text-white/90 underline decoration-white/40 underline-offset-4 hover:decoration-white"
+        >
+          {email}
+        </a>
+      </dd>
     </div>
   );
 }
@@ -76,15 +89,17 @@ function PhoneBlock({ phone }: PhoneBlockProps) {
   const phoneHref = `tel:${phone.replace(/\s+/g, "")}`;
   return (
     <div>
-      <div className="flex items-center gap-3 text-xl font-semibold">
+      <dt className="flex items-center gap-3 text-xl font-semibold">
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden>
           <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
         </svg>
         Telephone
-      </div>
-      <a href={phoneHref} className="mt-1 block text-white/90">
-        {phone}
-      </a>
+      </dt>
+      <dd>
+        <a href={phoneHref} className="mt-1 block text-white/90">
+          {phone}
+        </a>
+      </dd>
     </div>
   );
 }
@@ -97,23 +112,25 @@ type AddressBlockProps = {
 function AddressBlock({ address, mapEmbedUrl }: AddressBlockProps) {
   return (
     <div>
-      <div className="flex items-center gap-3 text-xl font-semibold">
+      <dt className="flex items-center gap-3 text-xl font-semibold">
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden>
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
         </svg>
         Address
-      </div>
-      <p className="mt-1 text-white/90">{address}</p>
-      <div className="mt-3 overflow-hidden rounded-xl bg-white/90 shadow-2xl ring-1 ring-black/10">
-        <iframe
-          title="bhCAD location"
-          src={mapEmbedUrl}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="h-56 w-full"
-          allowFullScreen
-        />
-      </div>
+      </dt>
+      <dd>
+        <p className="mt-1 text-white/90">{address}</p>
+        <div className="mt-3 overflow-hidden rounded-xl bg-white/90 shadow-2xl ring-1 ring-black/10">
+          <iframe
+            title="bhCAD location"
+            src={mapEmbedUrl}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-56 w-full"
+            allowFullScreen
+          />
+        </div>
+      </dd>
     </div>
   );
 }
@@ -124,23 +141,26 @@ type SocialLinksProps = {
 
 function SocialLinks({ links }: SocialLinksProps) {
   return (
-    <div className="pt-2">
-      <div className="text-xl font-semibold">Follow us</div>
-      <div className="mt-3 flex items-center gap-4">
+    <section className="pt-2" aria-labelledby="contact-social-heading">
+      <h3 id="contact-social-heading" className="text-xl font-semibold">
+        Follow us
+      </h3>
+      <ul className="mt-3 flex items-center gap-4" role="list">
         {links.map((link) => (
-          <a
-            key={link.name}
-            aria-label={link.name}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-emerald-700 shadow ring-1 ring-black/10"
-          >
-            {getSocialIcon(link.icon)}
-          </a>
+          <li key={link.name}>
+            <a
+              aria-label={link.name}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-emerald-700 shadow ring-1 ring-black/10"
+            >
+              {getSocialIcon(link.icon)}
+            </a>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }
 
@@ -165,4 +185,3 @@ function getSocialIcon(icon: ContactSocialIcon) {
     </svg>
   );
 }
-

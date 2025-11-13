@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: `Our Team | ${ORGANIZATION_NAME}`,
     description: teamDescription,
     url: teamUrl,
-    type: "profile",
+    type: "website",
     siteName: ORGANIZATION_NAME,
   },
   twitter: {

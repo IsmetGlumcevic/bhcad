@@ -12,28 +12,28 @@ export function ServicesContent() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-10 text-center md:grid-cols-5 md:text-2xl">
-          <div className="flex flex-col items-center gap-4">
+        <ul className="mt-12 grid grid-cols-2 gap-10 text-center md:grid-cols-5 md:text-2xl" role="list">
+          <li className="flex flex-col items-center gap-4">
             <IconWindows className="h-28 w-28 text-primary" aria-hidden />
-            <div className="font-bold">Administrative services</div>
-          </div>
-          <div className="flex flex-col items-center gap-4">
+            <h3 className="font-bold">Administrative services</h3>
+          </li>
+          <li className="flex flex-col items-center gap-4">
             <IconCog className="h-28 w-28 text-primary" aria-hidden />
-            <div className="font-bold">Engineering</div>
-          </div>
-          <div className="flex flex-col items-center gap-4">
+            <h3 className="font-bold">Engineering</h3>
+          </li>
+          <li className="flex flex-col items-center gap-4">
             <IconQuote className="h-28 w-28 text-primary" aria-hidden />
-            <div className="font-bold">Quoting</div>
-          </div>
-          <div className="flex flex-col items-center gap-4">
+            <h3 className="font-bold">Quoting</h3>
+          </li>
+          <li className="flex flex-col items-center gap-4">
             <IconCad className="h-28 w-28 text-primary" aria-hidden />
-            <div className="font-bold">CAD/CAM Technical support</div>
-          </div>
-          <div className="flex flex-col items-center gap-4">
+            <h3 className="font-bold">CAD/CAM Technical support</h3>
+          </li>
+          <li className="flex flex-col items-center gap-4">
             <IconLaptop className="h-28 w-28 text-primary" aria-hidden />
-            <div className="font-bold">Technical consulting and support</div>
-          </div>
-        </div>
+            <h3 className="font-bold">Technical consulting and support</h3>
+          </li>
+        </ul>
 
         <div className="mt-20 grid gap-10 md:grid-cols-2 lg:grid-cols-3 text-[17px]">
           <article>
@@ -101,4 +101,3 @@ export function ServicesContent() {
     </section>
   );
 }
-

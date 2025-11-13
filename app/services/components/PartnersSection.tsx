@@ -20,7 +20,7 @@ export function PartnersSection() {
           <div className="relative h-28 w-[360px]">
             <Image
               src="/assets/synapta.png"
-              alt="MWA smart steel solutions"
+              alt="Synapta logo"
               fill
               sizes="360px"
               className="object-contain"
@@ -31,4 +31,3 @@ export function PartnersSection() {
     </section>
   );
 }
-

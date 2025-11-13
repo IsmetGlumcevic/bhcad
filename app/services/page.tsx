@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: `Services | ${ORGANIZATION_NAME}`,
     description: servicesDescription,
     url: servicesUrl,
-    type: "article",
+    type: "website",
     siteName: ORGANIZATION_NAME,
   },
   twitter: {
