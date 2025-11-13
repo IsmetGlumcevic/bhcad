@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Karla, Oswald, Rubik } from "next/font/google";
 import "./globals.css";
+export const dynamic = "force-static";
 
 const karla = Karla({
   subsets: ["latin"],
