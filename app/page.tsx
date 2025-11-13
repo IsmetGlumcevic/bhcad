@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { BackToTopLink } from "./components/BackToTopLink";
 import { Header } from "./components/Header";
 import { HeroIntro } from "./components/HeroIntro";
@@ -5,13 +6,54 @@ import { HeroVideo } from "./components/HeroVideo";
 import { ServicesSection } from "./components/ServicesSection";
 import { SiteFooter } from "./components/SiteFooter";
 import { homeNavigation } from "./components/navigation";
+import { StructuredData } from "./components/StructuredData";
 import { homeServices } from "./data/homeServices";
+import { ORGANIZATION_NAME, ORGANIZATION_SCHEMA, SITE_URL } from "./lib/seo";
+
+const homeDescription =
+  "bhCAD delivers flexible CAD/CAM technical support, engineering consulting, and remote business administration for manufacturers across Europe.";
+
+export const metadata: Metadata = {
+  title: `${ORGANIZATION_NAME} | CAD/CAM Technical Consultancy & Remote Engineering`,
+  description: homeDescription,
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    title: `${ORGANIZATION_NAME} | CAD/CAM Technical Consultancy & Remote Engineering`,
+    description: homeDescription,
+    url: SITE_URL,
+    type: "website",
+    siteName: ORGANIZATION_NAME,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${ORGANIZATION_NAME} | CAD/CAM Technical Consultancy & Remote Engineering`,
+    description: homeDescription,
+  },
+};
+
+const homeSchema = [
+  ORGANIZATION_SCHEMA,
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: ORGANIZATION_NAME,
+    url: SITE_URL,
+    description: homeDescription,
+    potentialAction: {
+      "@type": "ContactAction",
+      target: `${SITE_URL}/#contact`,
+    },
+  },
+];
 
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-base text-base-foreground">
       <Header navigation={homeNavigation} />
+      <StructuredData data={homeSchema} id="home-schema" />
 
       <main className="flex flex-1 flex-col">
         <HeroVideo

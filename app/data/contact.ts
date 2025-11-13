@@ -1,3 +1,5 @@
+import { SOCIAL_LINKS } from "../lib/seo";
+
 export type ContactSocialIcon = "facebook" | "instagram" | "linkedin";
 
 export type ContactSocialLink = {
@@ -24,18 +26,17 @@ export const contactDetails: ContactDetails = {
 export const contactSocialLinks: ReadonlyArray<ContactSocialLink> = [
   {
     name: "Facebook",
-    href: "https://www.facebook.com/profile.php?id=61561074453074",
+    href: SOCIAL_LINKS.facebook,
     icon: "facebook",
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/bh_cad/",
+    href: SOCIAL_LINKS.instagram,
     icon: "instagram",
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/bh-cad-a43089266/?originalSubdomain=ba",
+    href: SOCIAL_LINKS.linkedin,
     icon: "linkedin",
   },
 ];
-
