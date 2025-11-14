@@ -1,4 +1,5 @@
 import type { IconProps } from "./icons";
+import type { JSX } from "react";
 
 export type NavigationItem = {
   label: string;
