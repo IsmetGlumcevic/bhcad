@@ -22,7 +22,7 @@ export function ContactHero({ details, socialLinks }: ContactHeroProps) {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-emerald-900/70" />
+        <div className="absolute inset-0 bg-emerald-900/40" />
       </div>
 
       <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl items-center px-4 py-16 md:px-6 lg:px-8">

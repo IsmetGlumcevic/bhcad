@@ -19,7 +19,7 @@ export function HeroIntro({
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="absolute inset-0 bg-[#0f172a]/70 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-[#0f172a]/40 mix-blend-multiply" />
       <div className="relative mx-auto flex w-full min-h-screen max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-center text-white md:px-6 md:py-24 lg:px-8">
         <p className="w-full font-heading uppercase tracking-[0.35em] text-secondary">
           {eyebrow}

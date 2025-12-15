@@ -12,7 +12,7 @@ export function TeamHero() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-emerald-900/70" />
+        <div className="absolute inset-0 bg-emerald-900/40" />
       </div>
       <div className="relative mx-auto flex min-h-[48vh] w-full max-w-4xl flex-col items-center justify-center gap-4 px-4 py-16 text-center md:min-h-[56vh] md:px-6 lg:px-8">
         <h1 className="text-4xl font-heading font-semibold md:text-5xl">Our team</h1>

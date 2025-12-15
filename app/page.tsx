@@ -7,7 +7,7 @@ import { ServicesSection } from "./components/ServicesSection";
 import { SiteFooter } from "./components/SiteFooter";
 import { homeNavigation } from "./components/navigation";
 import { StructuredData } from "./components/StructuredData";
-import { homeServices } from "./data/homeServices";
+import { isHomeService, services } from "./data/services";
 import { ORGANIZATION_NAME, ORGANIZATION_SCHEMA, SITE_URL } from "./lib/seo";
 
 const homeDescription =
@@ -48,6 +48,7 @@ const homeSchema = [
   },
 ];
 
+const homeServiceCards = services.filter(isHomeService);
 
 export default function Home() {
   return (
@@ -63,7 +64,7 @@ export default function Home() {
           videoSrc="/assets/hero-video.mp4"
           posterSrc="/assets/hero-background.png"
           videoType="video/mp4"
-          offset={80}
+          offset={180}
         />
         <HeroIntro
           backgroundImage="/assets/hero-background.png"
@@ -73,12 +74,12 @@ export default function Home() {
         />
         <ServicesSection
           id="services"
-          services={homeServices}
+          services={homeServiceCards}
           eyebrow="Services"
           heading="We go the extra mile!"
           description="Our dedicated team of experts is here to streamline your operations, enhance your technological capabilities, and drive your business forward."
           ctaLabel="Click here"
-          ctaHref="#contact"
+          ctaHref="/services"
         />
       </main>
 

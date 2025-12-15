@@ -17,7 +17,7 @@ export type ContactDetails = {
 
 export const contactDetails: ContactDetails = {
   email: "info@bhcad.ba",
-  phone: "+387 61 140 810",
+  phone: "+387 32 811 150",
   address: "Školska 10 Zenica 72 000, Bosnia and Herzegovina",
   mapEmbedUrl:
     "https://www.google.com/maps?q=%C5%A0kolska%2010%2C%20Zenica%2072000&z=18&output=embed&hl=bs",

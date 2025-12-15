@@ -19,19 +19,19 @@ export function ExpertiseLogos({ logos }: ExpertiseLogosProps) {
           </h2>
         </div>
 
-        <ul className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {logos.map((logo) => (
             <li key={logo.src} className="border border-surface bg-white p-4 shadow-sm">
-              <div className="relative mx-auto aspect-square w-24">
+              <div className="relative mx-auto aspect-square w-18">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   fill
-                  sizes="100px"
+                  sizes="72px"
                   className="object-contain"
                 />
               </div>
-              <p className="mt-3 text-center text-xs text-muted">{logo.alt}</p>
+              <p className="mt-3 text-center text-muted">{logo.alt}</p>
             </li>
           ))}
         </ul>

@@ -63,6 +63,81 @@ export function IconWindows({ className, ...props }: IconProps) {
   );
 }
 
+export function IconMechanical({ className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      className={className}
+      {...props}
+    >
+      <path
+        d="M21 3v6m0 0h-6m6 0L13.5 16.5a4.5 4.5 0 1 1-6-6L15 3h6Z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="10.5" cy="13.5" r="1.25" />
+    </svg>
+  );
+}
+
+export function IconElectrical({ className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      className={className}
+      {...props}
+    >
+      <path
+        d="m14.25 4.5-7.5 9h6l-3 6 7.5-9h-6l3-6Z"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function IconArchitectural({ className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      className={className}
+      {...props}
+    >
+      <path
+        d="M4 20h16M6 20V9l6-4 6 4v11M9 20v-8h6v8M9 9h6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function IconCivil({ className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      className={className}
+      {...props}
+    >
+      <path d="M3 19h18M3 15h18" strokeLinecap="round" />
+      <path d="M6 15v4m4-4v4m4-4v4m4-4v4" strokeLinecap="round" />
+      <path d="M4 11c1.6-2.2 3.2-2.2 4.8 0M15.2 11c1.6-2.2 3.2-2.2 4.8 0" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function ArrowUpIcon({ className, ...props }: IconProps) {
   return (
     <svg
