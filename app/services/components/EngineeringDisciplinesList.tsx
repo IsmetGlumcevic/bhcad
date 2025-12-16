@@ -19,7 +19,7 @@ export function EngineeringDisciplinesList({ disciplines }: EngineeringDisciplin
               key={title}
               className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/80 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="grid gap-6 md:grid-cols-2 md:items-center">
+              <div className="grid gap-3 md:gap-6 md:grid-cols-2 md:items-center">
                 <div
                   className={`relative h-full min-h-[240px] w-full ${imageOnRight ? "md:order-2" : "md:order-1"}`}
                 >

@@ -24,7 +24,7 @@ export function HeroIntro({
         <p className="w-full font-heading uppercase tracking-[0.35em] text-secondary">
           {eyebrow}
         </p>
-        <h1 className="text-9xl font-heading font-semibold uppercase leading-tight md:text-8xl max-w-4xl mx-auto">
+        <h1 className="text-5xl font-heading font-semibold uppercase leading-tight md:text-8xl max-w-4xl mx-auto">
           {heading}
         </h1>
         <p className="mx-auto max-w-lg text-white/85 md:text-lg">

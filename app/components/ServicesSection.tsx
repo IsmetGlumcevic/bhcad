@@ -1,8 +1,8 @@
 import Link from "next/link";
-import type { Service } from "./types";
+import { isEngineeringDiscipline, type HomeService } from "../data/services";
 
 type ServicesSectionProps = {
-  services: ReadonlyArray<Service>;
+  services: ReadonlyArray<HomeService>;
   heading: string;
   eyebrow: string;
   description: string;
@@ -20,6 +20,48 @@ export function ServicesSection({
   ctaHref,
   id,
 }: ServicesSectionProps) {
+  const engineeringDisciplines = services.filter(isEngineeringDiscipline);
+  const coreServices = services.filter(
+    (service) => !isEngineeringDiscipline(service)
+  );
+  const shouldCenterLastRow = coreServices.length % 3 === 2;
+  const lastRowStartIndex = shouldCenterLastRow
+    ? coreServices.length - 2
+    : null;
+
+  const renderServiceCard = (
+    { title, description: body, icon: Icon, featured }: HomeService,
+    extraClass?: string
+  ) => {
+    const featuredClass = featured
+      ? "shadow-lg shadow-secondary/30 lg:translate-y-6"
+      : "";
+
+    return (
+      <article
+        key={title}
+        className={[
+          "flex h-full flex-col items-center gap-5 border border-surface hover:bg-white p-10 text-center hover:shadow-2xl transition-shadow",
+          "md:col-span-1",
+          featuredClass,
+          extraClass,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <div className="flex items-center justify-center">
+          <span className="flex h-[70px] w-[70px] items-center justify-center text-primary">
+            <Icon className="h-[70px] w-[70px]" aria-hidden />
+          </span>
+        </div>
+        <h3 className="text-4xl font-heading font-semibold text-primary">
+          {title}
+        </h3>
+        <p className="leading-relaxed text-muted">{body}</p>
+      </article>
+    );
+  };
+
   return (
     <section
       id={id}
@@ -36,40 +78,35 @@ export function ServicesSection({
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map(
-            ({ title, description: body, icon: Icon, featured }, index) => {
-              const spanClass = index >= 3 ? "lg:col-span-3" : "lg:col-span-2";
-              const featuredClass = featured
-                ? "shadow-lg shadow-secondary/30 lg:translate-y-6"
-                : "";
+        {coreServices.length ? (
+          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {coreServices.map((service, index) => {
+              const centerClass =
+                index === 3
+                  ? "lg:col-start-1 lg:col-end-2 mx-auto"
+                  : index === 4
+                  ? "lg:col-start-2 lg:col-end-4 mx-auto"
+                  : "";
 
-              return (
-                <article
-                  key={title}
-                  className={[
-                    "flex h-full flex-col items-center gap-5 border border-surface hover:bg-white p-10 text-center hover:shadow-2xl transition-shadow",
-                    "md:col-span-1",
-                   // spanClass,
-                    featuredClass,
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                >
-                  <div className="flex items-center justify-center">
-                    <span className="flex h-[70px] w-[70px] items-center justify-center text-primary">
-                      <Icon className="h-[70px] w-[70px]" aria-hidden />
-                    </span>
-                  </div>
-                  <h3 className="text-4xl font-heading font-semibold text-primary">
-                    {title}
-                  </h3>
-                  <p className="leading-relaxed text-muted">{body}</p>
-                </article>
-              );
-            }
-          )}
-        </div>
+              return renderServiceCard(service, centerClass);
+            })}
+          </div>
+        ) : null}
+
+        {engineeringDisciplines.length ? (
+          <div className="mt-16">
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-primary">
+                Engineering disciplines
+              </p>
+            </div>
+            <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              {engineeringDisciplines.map((service) =>
+                renderServiceCard(service)
+              )}
+            </div>
+          </div>
+        ) : null}
 
         <div className="mt-12 flex justify-center">
           <Link

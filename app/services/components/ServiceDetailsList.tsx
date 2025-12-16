@@ -36,10 +36,10 @@ export function ServiceDetailsList({ services }: ServiceDetailsListProps) {
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-primary/90"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold  shadow-md transition hover:bg-primary/90"
                     aria-label={`Plan ${title} with bhCAD`}
                   >
-                    Plan this with us <span aria-hidden>&rarr;</span>
+                    <span className="text-white">Plan this with us <span aria-hidden>&rarr;</span></span>
                   </Link>
                   <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
                     Delivery ready

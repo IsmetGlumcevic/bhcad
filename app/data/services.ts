@@ -77,7 +77,8 @@ export const services: ReadonlyArray<BaseService> = [
   {
     title: "Nesting and Quoting in ERP Packages",
     image: "/assets/service/images/Nesting-and-Quoting-in-ERP-Packages.png",
-    imageAlt: "Technician optimizing nesting and quoting inside an ERP interface",
+    imageAlt:
+      "Technician optimizing nesting and quoting inside an ERP interface",
     paragraphs: [
       "We optimize fabrication processes and reduce waste through advanced nesting techniques. Additionally, we offer quoting services within ERP packages, ensuring your processes are not only efficient but also cost‑effective.",
     ],
@@ -86,7 +87,8 @@ export const services: ReadonlyArray<BaseService> = [
   {
     title: "Drawing and part fabrication",
     image: "/assets/service/images/Drawing-and-part-fabrication.png",
-    imageAlt: "Detailed technical drawing being reviewed beside fabricated parts",
+    imageAlt:
+      "Detailed technical drawing being reviewed beside fabricated parts",
     paragraphs: [
       "Our team specializes in creating precise technical drawings that meet the highest industry standards. No matter the complexity of your requirements, we are here to provide solutions tailored to your specific needs.",
     ],
@@ -103,21 +105,21 @@ export const services: ReadonlyArray<BaseService> = [
     contexts: ["home"],
   },
   {
-    title: "Engineering",
-    description:
-      "Applied R&D and process optimization to refine parts, assemblies, and production flows across industries.",
-    icon: IconCog,
-    image: "/assets/service/images/Mechanical-Engineering.png",
-    imageAlt: "Engineer refining mechanical designs on a laptop",
-    contexts: ["home"],
-  },
-  {
     title: "Business administration",
     description:
       "We specialize in streamlining your administrative tasks, allowing you to focus on what truly matters – growing your business.",
     icon: IconWindows,
     image: "/assets/service/images/Administrative-Services.png",
     imageAlt: "Administrative tools and dashboards on a desk",
+    contexts: ["home"],
+  },
+  {
+    title: "Engineering",
+    description:
+      "Applied R&D and process optimization to refine parts, assemblies, and production flows across industries.",
+    icon: IconCog,
+    image: "/assets/service/images/Mechanical-Engineering.png",
+    imageAlt: "Engineer refining mechanical designs on a laptop",
     contexts: ["home"],
   },
   {
@@ -194,8 +196,12 @@ export function isHomeService(service: BaseService): service is HomeService {
   );
 }
 
-export function isServiceDetail(service: BaseService): service is ServiceDetail {
-  return service.contexts.includes("detail") && Array.isArray(service.paragraphs);
+export function isServiceDetail(
+  service: BaseService
+): service is ServiceDetail {
+  return (
+    service.contexts.includes("detail") && Array.isArray(service.paragraphs)
+  );
 }
 
 export function isEngineeringDiscipline(

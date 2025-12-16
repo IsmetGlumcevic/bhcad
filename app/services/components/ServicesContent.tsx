@@ -27,7 +27,7 @@ export function ServicesContent() {
         <div className="mt-16 space-y-14">
           <ServiceDetailsList services={serviceDetails} />
 
-          <div className="overflow-hidden rounded-3xl border border-primary/10 bg-gradient-to-br from-primary/10 via-white to-secondary/10 p-10 md:p-12">
+          <div className="overflow-hidden rounded-3xl border border-primary/10 bg-gradient-to-br from-primary/10 via-white to-secondary/10 px-2 py-4 md:px-10 md:py-12">
             <div className="text-center">
               <p className="text-sm font-semibold uppercase tracking-[4px] text-primary">
                 {servicesIntro.disciplinesEyebrow}
