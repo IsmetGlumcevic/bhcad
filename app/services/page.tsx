@@ -9,10 +9,13 @@ import { ExpertiseLogos } from "./components/ExpertiseLogos";
 import { PartnersSection } from "./components/PartnersSection";
 import { expertiseLogos } from "../data/expertise";
 import { ORGANIZATION_NAME, SITE_URL } from "../lib/seo";
+import { services } from "../data/services";
 
 const servicesUrl = `${SITE_URL}/services`;
 const servicesDescription =
-  "Explore bhCAD's CAD/CAM technical support, engineering consulting, administrative services, and software expertise tailored to streamline manufacturing operations.";
+  "Explore bhCAD's CAD/CAM technical support, quoting, business administration, and mechanical, electrical, architectural, and civil engineering disciplines tailored to streamline manufacturing operations across Europe.";
+
+const servicesOffered = Array.from(new Set(services.map(({ title }) => title)));
 
 export const metadata: Metadata = {
   title: `Services | ${ORGANIZATION_NAME}`,
@@ -51,14 +54,8 @@ const servicesSchema = {
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "CAD/CAM & Consulting Services",
-    itemListElement: [
-      "Administrative services",
-      "Engineering",
-      "Quoting",
-      "CAD/CAM Technical support",
-      "Technical consulting and support",
-    ].map((service) => ({
+    name: "CAD/CAM, Quoting, Administration & Engineering Services",
+    itemListElement: servicesOffered.map((service) => ({
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
