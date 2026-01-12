@@ -13,7 +13,7 @@ export type AboutIntroContent = {
 };
 
 export type AboutOriginContent = {
-  headingLines: [string, string];
+  headingLines: Readonly<[string, string]>;
   highlight: string;
   paragraphs: ReadonlyArray<string>;
   image: {
