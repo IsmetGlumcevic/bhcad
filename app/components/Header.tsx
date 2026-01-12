@@ -5,11 +5,17 @@ import { useState } from "react";
 import type { NavigationItem } from "./types";
 import { Logo } from "./Logo";
 
-type HeaderProps = {
-  navigation: ReadonlyArray<NavigationItem>;
+type HeaderLabels = {
+  openMenu: string;
+  closeMenu: string;
 };
 
-export function Header({ navigation }: HeaderProps) {
+type HeaderProps = {
+  navigation: ReadonlyArray<NavigationItem>;
+  labels: HeaderLabels;
+};
+
+export function Header({ navigation, labels }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -36,7 +42,7 @@ export function Header({ navigation }: HeaderProps) {
           </nav>
           <button
             type="button"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? labels.closeMenu : labels.openMenu}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((prev) => !prev)}
             className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:hidden"
@@ -87,7 +93,7 @@ export function Header({ navigation }: HeaderProps) {
             <Logo className="h-10" />
             <button
               type="button"
-              aria-label="Close menu"
+              aria-label={labels.closeMenu}
               onClick={closeMenu}
               className="rounded-full p-2 text-gray-200 transition hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5bb59f]"
             >

@@ -6,21 +6,22 @@ import { StructuredData } from "../components/StructuredData";
 import { AboutIntroSection } from "./components/AboutIntroSection";
 import { OriginSection } from "./components/OriginSection";
 import { aboutIntroContent, aboutOriginContent } from "../data/about";
+import { getCopy } from "../i18n";
 import { ORGANIZATION_NAME, ORGANIZATION_SCHEMA, SITE_URL } from "../lib/seo";
 
+const { aboutPage, footer, header, contactPage } = getCopy();
+
 const aboutUrl = `${SITE_URL}/about`;
-const aboutDescription =
-  "Learn about bhCAD's mission, background, and roots in Bosnia & Herzegovina, where our remote team delivers CAD/CAM expertise for European partners.";
 
 export const metadata: Metadata = {
   title: `About ${ORGANIZATION_NAME}`,
-  description: aboutDescription,
+  description: aboutPage.description,
   alternates: {
     canonical: aboutUrl,
   },
   openGraph: {
     title: `About ${ORGANIZATION_NAME}`,
-    description: aboutDescription,
+    description: aboutPage.description,
     url: aboutUrl,
     type: "article",
     siteName: ORGANIZATION_NAME,
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `About ${ORGANIZATION_NAME}`,
-    description: aboutDescription,
+    description: aboutPage.description,
   },
 };
 
@@ -37,14 +38,20 @@ const aboutSchema = {
   "@type": "AboutPage",
   name: `About ${ORGANIZATION_NAME}`,
   url: aboutUrl,
-  description: aboutDescription,
+  description: aboutPage.description,
   mainEntity: ORGANIZATION_SCHEMA,
 };
 
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col bg-base text-base-foreground">
-      <Header navigation={aboutNavigation} />
+      <Header
+        navigation={aboutNavigation}
+        labels={{
+          openMenu: header.openMenuLabel,
+          closeMenu: header.closeMenuLabel,
+        }}
+      />
       <StructuredData data={aboutSchema} id="about-schema" />
 
       <main className="flex flex-1 flex-col">
@@ -52,7 +59,11 @@ export default function AboutPage() {
         <OriginSection content={aboutOriginContent} />
       </main>
 
-      <SiteFooter email="info@bhcad.ba" />
+      <SiteFooter
+        email={contactPage.details.email}
+        companyName={footer.companyName}
+        copyrightLabel={footer.copyrightLabel}
+      />
     </div>
   );
 }

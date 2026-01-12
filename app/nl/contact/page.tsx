@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Header } from "../components/Header";
-import { SiteFooter } from "../components/SiteFooter";
-import { contactNavigation } from "../components/navigation";
-import { StructuredData } from "../components/StructuredData";
-import { ContactHero } from "./components/ContactHero";
-import { contactDetails, contactSocialLinks } from "../data/contact";
-import { getCopy } from "../i18n";
-import { ORGANIZATION_NAME, SITE_URL } from "../lib/seo";
+import { Header } from "../../components/Header";
+import { SiteFooter } from "../../components/SiteFooter";
+import { StructuredData } from "../../components/StructuredData";
+import { ContactHero } from "../../contact/components/ContactHero";
+import { contactSocialLinks } from "../../data/contact";
+import { getCopy } from "../../i18n";
+import { ORGANIZATION_NAME, SITE_URL } from "../../lib/seo";
 
-const { contactPage, footer, header } = getCopy();
+const locale = "nl" as const;
+const copy = getCopy(locale);
 
-const contactUrl = `${SITE_URL}/contact`;
+const contactUrl = `${SITE_URL}/nl/contact`;
 
 export const metadata: Metadata = {
   title: `Contact ${ORGANIZATION_NAME}`,
-  description: contactPage.description,
+  description: copy.contactPage.description,
   alternates: {
     canonical: contactUrl,
   },
   openGraph: {
     title: `Contact ${ORGANIZATION_NAME}`,
-    description: contactPage.description,
+    description: copy.contactPage.description,
     url: contactUrl,
     type: "website",
     siteName: ORGANIZATION_NAME,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `Contact ${ORGANIZATION_NAME}`,
-    description: contactPage.description,
+    description: copy.contactPage.description,
   },
 };
 
@@ -37,13 +37,13 @@ const contactSchema = {
   "@type": "ContactPage",
   name: `Contact ${ORGANIZATION_NAME}`,
   url: contactUrl,
-  description: contactPage.description,
+  description: copy.contactPage.description,
   mainEntity: {
     "@type": "Organization",
     name: ORGANIZATION_NAME,
     url: SITE_URL,
-    email: contactDetails.email,
-    telephone: contactDetails.phone,
+    email: copy.contactPage.details.email,
+    telephone: copy.contactPage.details.phone,
     address: {
       "@type": "PostalAddress",
       streetAddress: "Školska 10",
@@ -55,30 +55,30 @@ const contactSchema = {
   },
 };
 
-export default function ContactPage() {
+export default function ContactPageNl() {
   return (
     <div className="flex min-h-screen flex-col bg-base text-base-foreground">
       <Header
-        navigation={contactNavigation}
+        navigation={copy.navigation}
         labels={{
-          openMenu: header.openMenuLabel,
-          closeMenu: header.closeMenuLabel,
+          openMenu: copy.header.openMenuLabel,
+          closeMenu: copy.header.closeMenuLabel,
         }}
       />
       <StructuredData data={contactSchema} id="contact-schema" />
 
       <main className="flex flex-1 flex-col">
         <ContactHero
-          details={contactDetails}
+          details={copy.contactPage.details}
           socialLinks={contactSocialLinks}
-          labels={contactPage.hero}
+          labels={copy.contactPage.hero}
         />
       </main>
 
       <SiteFooter
-        email={contactDetails.email}
-        companyName={footer.companyName}
-        copyrightLabel={footer.copyrightLabel}
+        email={copy.contactPage.details.email}
+        companyName={copy.footer.companyName}
+        copyrightLabel={copy.footer.copyrightLabel}
       />
     </div>
   );
