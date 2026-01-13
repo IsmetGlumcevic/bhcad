@@ -1,13 +1,7 @@
 import type { NavigationItem } from "./types";
+import { getCopy } from "../i18n";
 
-// Common navigation for standalone pages
-export const defaultNavigation: ReadonlyArray<NavigationItem> = [
-  { label: "Home", href: "/" },
-  { label: "About us", href: "/about" },
-  { label: "Our services", href: "/services" },
-  { label: "Our team", href: "/our-team" },
-  { label: "Contact", href: "/contact" },
-];
+const defaultNavigation: ReadonlyArray<NavigationItem> = getCopy().navigation;
 
 export const homeNavigation = defaultNavigation;
 export const aboutNavigation = defaultNavigation;

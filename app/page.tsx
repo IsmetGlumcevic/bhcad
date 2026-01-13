@@ -7,21 +7,21 @@ import { ServicesSection } from "./components/ServicesSection";
 import { SiteFooter } from "./components/SiteFooter";
 import { homeNavigation } from "./components/navigation";
 import { StructuredData } from "./components/StructuredData";
-import { isHomeService, services } from "./data/services";
+import { getServices, isHomeService } from "./data/services";
+import { getCopy } from "./i18n";
 import { ORGANIZATION_NAME, ORGANIZATION_SCHEMA, SITE_URL } from "./lib/seo";
 
-const homeDescription =
-  "bhCAD delivers flexible CAD/CAM technical support, engineering consulting, and remote business administration for manufacturers across Europe.";
+const { home, footer, header, contactPage } = getCopy();
 
 export const metadata: Metadata = {
   title: `${ORGANIZATION_NAME} | CAD/CAM Technical Consultancy & Remote Engineering`,
-  description: homeDescription,
+  description: home.description,
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
     title: `${ORGANIZATION_NAME} | CAD/CAM Technical Consultancy & Remote Engineering`,
-    description: homeDescription,
+    description: home.description,
     url: SITE_URL,
     type: "website",
     siteName: ORGANIZATION_NAME,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${ORGANIZATION_NAME} | CAD/CAM Technical Consultancy & Remote Engineering`,
-    description: homeDescription,
+    description: home.description,
   },
 };
 
@@ -40,7 +40,7 @@ const homeSchema = [
     "@type": "WebSite",
     name: ORGANIZATION_NAME,
     url: SITE_URL,
-    description: homeDescription,
+    description: home.description,
     potentialAction: {
       "@type": "ContactAction",
       target: `${SITE_URL}/#contact`,
@@ -48,44 +48,55 @@ const homeSchema = [
   },
 ];
 
-const homeServiceCards = services.filter(isHomeService);
+const homeServiceCards = getServices().filter(isHomeService);
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-base text-base-foreground">
-      <Header navigation={homeNavigation} />
+      <Header
+        navigation={homeNavigation}
+        labels={{
+          openMenu: header.openMenuLabel,
+          closeMenu: header.closeMenuLabel,
+        }}
+      />
       <StructuredData data={homeSchema} id="home-schema" />
 
       <main className="flex flex-1 flex-col">
         <HeroVideo
           id="home"
-          badge="Bosnia and Herzegovina"
-          description="Strategically located to serve European manufacturers with agile, cost-effective solutions."
-          videoSrc="/assets/hero-video.mp4"
-          posterSrc="/assets/hero-background.png"
-          videoType="video/mp4"
-          offset={180}
+          badge={home.heroVideo.badge}
+          description={home.heroVideo.description}
+          videoSrc={home.heroVideo.videoSrc}
+          posterSrc={home.heroVideo.posterSrc}
+          videoType={home.heroVideo.videoType}
+          offset={home.heroVideo.offset}
         />
         <HeroIntro
-          backgroundImage="/assets/hero-background.png"
-          eyebrow="Technical Consultancy Bureau"
-          heading="We go the extra mile!"
-          description="Your flexible and reliable partner providing online services and the workforce you struggle to find."
+          backgroundImage={home.heroIntro.backgroundImage}
+          eyebrow={home.heroIntro.eyebrow}
+          heading={home.heroIntro.heading}
+          description={home.heroIntro.description}
         />
         <ServicesSection
           id="services"
           services={homeServiceCards}
-          eyebrow="Services"
-          heading="We go the extra mile!"
-          description="Our dedicated team of experts is here to streamline your operations, enhance your technological capabilities, and drive your business forward."
-          ctaLabel="Click here"
-          ctaHref="/services"
+          eyebrow={home.servicesSection.eyebrow}
+          heading={home.servicesSection.heading}
+          description={home.servicesSection.description}
+          ctaLabel={home.servicesSection.ctaLabel}
+          ctaHref={home.servicesSection.ctaHref}
         />
       </main>
 
-      <SiteFooter id="contact" email="info@bhcad.ba" />
+      <SiteFooter
+        id="contact"
+        email={contactPage.details.email}
+        companyName={footer.companyName}
+        copyrightLabel={footer.copyrightLabel}
+      />
 
-      <BackToTopLink target="#home" />
+      <BackToTopLink target="#home" label={home.backToTopLabel} />
     </div>
   );
 }

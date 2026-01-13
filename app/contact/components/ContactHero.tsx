@@ -5,12 +5,24 @@ import type {
   ContactSocialLink,
 } from "../../data/contact";
 
+type ContactHeroLabels = {
+  heading: string;
+  description: string;
+  contactInfoHeading: string;
+  emailLabel: string;
+  phoneLabel: string;
+  addressLabel: string;
+  followUsLabel: string;
+  mapTitle: string;
+};
+
 type ContactHeroProps = {
   details: ContactDetails;
   socialLinks: ReadonlyArray<ContactSocialLink>;
+  labels: ContactHeroLabels;
 };
 
-export function ContactHero({ details, socialLinks }: ContactHeroProps) {
+export function ContactHero({ details, socialLinks, labels }: ContactHeroProps) {
   return (
     <section id="contact" className="relative isolate overflow-hidden text-white">
       <div className="absolute inset-0">
@@ -28,12 +40,11 @@ export function ContactHero({ details, socialLinks }: ContactHeroProps) {
       <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl items-center px-4 py-16 md:px-6 lg:px-8">
         <div className="max-w-xl space-y-6">
           <header>
-            <h1 className="text-4xl font-heading font-semibold md:text-5xl">Contact us</h1>
+            <h1 className="text-4xl font-heading font-semibold md:text-5xl">
+              {labels.heading}
+            </h1>
             <p className="mt-4 text-white/95 md:text-lg">
-              You can contact us by phone or e-mail to learn more about our
-              services and how we can help improve your business. Our team is
-              ready to answer all your questions and provide you with the
-              necessary information quickly and efficiently.
+              {labels.description}
             </p>
           </header>
 
@@ -45,14 +56,19 @@ export function ContactHero({ details, socialLinks }: ContactHeroProps) {
               id="contact-details-heading"
               className="text-2xl font-heading font-semibold text-white"
             >
-              Contact information
+              {labels.contactInfoHeading}
             </h2>
             <dl className="space-y-4 text-white">
-              <EmailBlock email={details.email} />
-              <PhoneBlock phone={details.phone} />
-              <AddressBlock address={details.address} mapEmbedUrl={details.mapEmbedUrl} />
+              <EmailBlock email={details.email} label={labels.emailLabel} />
+              <PhoneBlock phone={details.phone} label={labels.phoneLabel} />
+              <AddressBlock
+                address={details.address}
+                mapEmbedUrl={details.mapEmbedUrl}
+                label={labels.addressLabel}
+                mapTitle={labels.mapTitle}
+              />
             </dl>
-            <SocialLinks links={socialLinks} />
+            <SocialLinks links={socialLinks} heading={labels.followUsLabel} />
           </section>
         </div>
       </div>
@@ -60,16 +76,16 @@ export function ContactHero({ details, socialLinks }: ContactHeroProps) {
   );
 }
 
-type EmailBlockProps = { email: string };
+type EmailBlockProps = { email: string; label: string };
 
-function EmailBlock({ email }: EmailBlockProps) {
+function EmailBlock({ email, label }: EmailBlockProps) {
   return (
     <div>
       <dt className="flex items-center gap-3 text-xl font-semibold">
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden>
           <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z" />
         </svg>
-        E-mail
+        {label}
       </dt>
       <dd>
         <a
@@ -83,9 +99,9 @@ function EmailBlock({ email }: EmailBlockProps) {
   );
 }
 
-type PhoneBlockProps = { phone: string };
+type PhoneBlockProps = { phone: string; label: string };
 
-function PhoneBlock({ phone }: PhoneBlockProps) {
+function PhoneBlock({ phone, label }: PhoneBlockProps) {
   const phoneHref = `tel:${phone.replace(/\s+/g, "")}`;
   return (
     <div>
@@ -93,7 +109,7 @@ function PhoneBlock({ phone }: PhoneBlockProps) {
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden>
           <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
         </svg>
-        Telephone
+        {label}
       </dt>
       <dd>
         <a href={phoneHref} className="mt-1 block text-white/90">
@@ -107,22 +123,24 @@ function PhoneBlock({ phone }: PhoneBlockProps) {
 type AddressBlockProps = {
   address: string;
   mapEmbedUrl: string;
+  label: string;
+  mapTitle: string;
 };
 
-function AddressBlock({ address, mapEmbedUrl }: AddressBlockProps) {
+function AddressBlock({ address, mapEmbedUrl, label, mapTitle }: AddressBlockProps) {
   return (
     <div>
       <dt className="flex items-center gap-3 text-xl font-semibold">
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden>
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
         </svg>
-        Address
+        {label}
       </dt>
       <dd>
         <p className="mt-1 text-white/90">{address}</p>
         <div className="mt-3 overflow-hidden rounded-xl bg-white/90 shadow-2xl ring-1 ring-black/10">
           <iframe
-            title="bhCAD location"
+            title={mapTitle}
             src={mapEmbedUrl}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -137,13 +155,14 @@ function AddressBlock({ address, mapEmbedUrl }: AddressBlockProps) {
 
 type SocialLinksProps = {
   links: ReadonlyArray<ContactSocialLink>;
+  heading: string;
 };
 
-function SocialLinks({ links }: SocialLinksProps) {
+function SocialLinks({ links, heading }: SocialLinksProps) {
   return (
     <section className="pt-2" aria-labelledby="contact-social-heading">
       <h3 id="contact-social-heading" className="text-xl font-semibold">
-        Follow us
+        {heading}
       </h3>
       <ul className="mt-3 flex items-center gap-4" role="list">
         {links.map((link) => (

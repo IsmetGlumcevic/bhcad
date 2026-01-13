@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Karla, Oswald, Rubik } from "next/font/google";
 import "./globals.css";
+import { getCopy } from "./i18n";
+
 export const dynamic = "force-static";
 
 const karla = Karla({
@@ -20,10 +22,11 @@ const oswald = Oswald({
   weight: ["400", "500", "600", "700"],
 });
 
+const { layout } = getCopy();
+
 export const metadata: Metadata = {
-  title: "bhCAD — Technical Consultancy Bureau",
-  description:
-    "bhCAD offers CAD/CAM technical support, engineering consultancy, and business administration services tailored to your needs.",
+  title: layout.title,
+  description: layout.description,
 };
 
 export default function RootLayout({
@@ -32,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang={layout.htmlLang}>
       <body
         className={`${karla.variable} ${rubik.variable} ${oswald.variable} antialiased bg-base text-base-foreground`}
       >
