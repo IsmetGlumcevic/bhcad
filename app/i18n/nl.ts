@@ -15,6 +15,7 @@ export const nlCopy = {
   header: {
     openMenuLabel: "Menu openen",
     closeMenuLabel: "Menu sluiten",
+    languageLabel: "Taal",
   },
   footer: {
     copyrightLabel: "Copyright ©",

@@ -15,6 +15,7 @@ export const enCopy = {
   header: {
     openMenuLabel: "Open menu",
     closeMenuLabel: "Close menu",
+    languageLabel: "Language",
   },
   footer: {
     copyrightLabel: "Copyright ©",

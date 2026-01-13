@@ -1,9 +1,17 @@
 'use client';
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import type { NavigationItem } from "./types";
 import { Logo } from "./Logo";
+import { defaultLocale, getCopy, locales, type Locale } from "../i18n";
+
+const languageNames: Record<Locale, string> = {
+  en: "English",
+  de: "Deutsch",
+  nl: "Nederlands",
+};
 
 type HeaderLabels = {
   openMenu: string;
@@ -17,8 +25,93 @@ type HeaderProps = {
 
 export function Header({ navigation, labels }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname() || "/";
+  const searchParams = useSearchParams();
+  const [hash, setHash] = useState("");
 
   const closeMenu = () => setIsMenuOpen(false);
+  const queryString = searchParams.toString();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const updateHash = () => setHash(window.location.hash);
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, [pathname, queryString]);
+
+  const { currentLocale, basePath } = useMemo(() => {
+    const matchedLocale =
+      locales.find((locale) => {
+        if (locale === defaultLocale) return false;
+        const prefix = `/${locale}`;
+        return pathname === prefix || pathname.startsWith(`${prefix}/`);
+      }) ?? defaultLocale;
+
+    if (matchedLocale === defaultLocale) {
+      return {
+        currentLocale: matchedLocale,
+        basePath: pathname || "/",
+      };
+    }
+
+    const prefix = `/${matchedLocale}`;
+    const strippedPath = pathname.startsWith(prefix)
+      ? pathname.slice(prefix.length)
+      : pathname;
+
+    return {
+      currentLocale: matchedLocale,
+      basePath: strippedPath === "" ? "/" : strippedPath,
+    };
+  }, [pathname]);
+
+  const languageLabel = getCopy(currentLocale).header.languageLabel;
+
+  const buildLocaleHref = (locale: Locale) => {
+    const prefix = locale === defaultLocale ? "" : `/${locale}`;
+    const path = `${prefix}${basePath === "/" ? "" : basePath}` || "/";
+    const query = queryString ? `?${queryString}` : "";
+    return `${path}${query}${hash}`;
+  };
+
+  const renderLanguageLinks = (
+    variant: "desktop" | "mobile",
+    onSelect?: () => void,
+  ) => {
+    const isDesktop = variant === "desktop";
+    const containerClass = isDesktop
+      ? "hidden md:flex items-center rounded-full bg-white/15 p-1"
+      : "flex items-center rounded-full bg-white/80 p-1";
+    const linkBase =
+      "rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide transition";
+    const activeClass = isDesktop
+      ? "bg-white text-[#1f3f36]"
+      : "bg-gray-900 text-white";
+    const inactiveClass = isDesktop
+      ? "text-white/90 hover:bg-white/25"
+      : "text-gray-900/80 hover:bg-black/10";
+
+    return (
+      <nav aria-label={languageLabel} className={containerClass}>
+        {locales.map((locale) => {
+          const isActive = locale === currentLocale;
+          return (
+            <Link
+              key={locale}
+              href={buildLocaleHref(locale)}
+              className={`${linkBase} ${isActive ? activeClass : inactiveClass}`}
+              aria-current={isActive ? "page" : undefined}
+              aria-label={languageNames[locale]}
+              onClick={onSelect}
+            >
+              {locale.toUpperCase()}
+            </Link>
+          );
+        })}
+      </nav>
+    );
+  };
 
   return (
     <header className="relative z-20 bg-linear-to-r from-[#5c8a72] via-[#5bb59f] to-[#6ce0cc] text-white shadow-lg">
@@ -40,6 +133,7 @@ export function Header({ navigation, labels }: HeaderProps) {
               ))}
             </ul>
           </nav>
+          {renderLanguageLinks("desktop")}
           <button
             type="button"
             aria-label={isMenuOpen ? labels.closeMenu : labels.openMenu}
@@ -125,6 +219,14 @@ export function Header({ navigation, labels }: HeaderProps) {
               ))}
             </ul>
           </nav>
+          <div className="mt-6 border-t border-gray-200 px-4 pt-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-gray-900">
+              {languageLabel}
+            </p>
+            <div className="mt-3 flex">
+              {renderLanguageLinks("mobile", closeMenu)}
+            </div>
+          </div>
         </div>
       </div>
     </header>

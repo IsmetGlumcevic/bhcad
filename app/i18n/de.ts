@@ -15,6 +15,7 @@ export const deCopy = {
   header: {
     openMenuLabel: "Menü öffnen",
     closeMenuLabel: "Menü schließen",
+    languageLabel: "Sprache",
   },
   footer: {
     copyrightLabel: "Copyright ©",
