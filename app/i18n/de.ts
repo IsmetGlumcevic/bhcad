@@ -126,7 +126,7 @@ export const deCopy = {
       },
     },
     origin: {
-      headingLines: ["Woher", "kommen wir"],
+      headingLines: ["Woher", "kommen wir"] as [string, string],
       highlight: "Bosnien & Herzegowina",
       paragraphs: [
         "Bosnien & Herzegowina ist ein Land voller kulturellem Erbe, natürlicher Schönheit und touristischer Attraktionen. Es bildet den Kreuzungspunkt vieler Zivilisationen und Kulturen. Tausend Jahre kultureller Vielfalt haben sich in Bosnien & Herzegowina vereint, was das Land zu einem der faszinierendsten in Südeuropa macht. Es ist ein Land, in dem Sie an einer Straßenecke eine osmanische Moschee, eine jüdische Synagoge sowie katholische und orthodoxe Kirchen finden können.",

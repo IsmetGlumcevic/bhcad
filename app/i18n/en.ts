@@ -126,7 +126,7 @@ export const enCopy = {
       },
     },
     origin: {
-      headingLines: ["Where are", "we from"],
+      headingLines: ["Where are", "we from"] as [string, string],
       highlight: "Bosnia & Herzegovina",
       paragraphs: [
         "Bosnia & Herzegovina is a land full of cultural heritage, natural beauty, and tourist attractions and it represents a crossroad of many civilizations and cultures. Thousand years of cultural diversity merged into Bosnia & Herzegovina which makes it one of the most fascinating countries in southern Europe. It's a country where you can find an Ottoman mosque, Jewish synagogue, and catholic and orthodox churches on the same corner of any street.",
