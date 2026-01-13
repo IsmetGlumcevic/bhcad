@@ -330,4 +330,4 @@ export const deCopy = {
       contexts: ["home", "discipline"],
     },
   ],
-} as const;
+};
