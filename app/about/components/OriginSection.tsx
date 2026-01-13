@@ -30,7 +30,8 @@ export function OriginSection({ content }: OriginSectionProps) {
             id="origin-heading"
             className="text-4xl font-extrabold font-heading uppercase leading-none tracking-[4px] text-primary md:text-6xl"
           >
-            {content.headingLines[0]} <br /> {content.headingLines[1]}
+            {content.headingLines[0] ?? ""} <br />{" "}
+            {content.headingLines[1] ?? ""}
           </h2>
           <div className="mt-6 max-w-xl text-muted md:text-lg">
             {content.paragraphs.map((paragraph, index) => (
@@ -67,4 +68,3 @@ function OriginParagraph({ text, highlight }: OriginParagraphProps) {
     </p>
   );
 }
-
