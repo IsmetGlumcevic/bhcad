@@ -126,7 +126,7 @@ export const nlCopy = {
       },
     },
     origin: {
-      headingLines: ["Waar komen", "wij vandaan"],
+      headingLines: ["Waar komen", "wij vandaan"] as [string, string],
       highlight: "Bosnië & Herzegovina",
       paragraphs: [
         "Bosnië & Herzegovina is een land vol cultureel erfgoed, natuurlijke schoonheid en toeristische attracties. Het vormt een kruispunt van vele beschavingen en culturen. Duizend jaar culturele diversiteit is samengekomen in Bosnië & Herzegovina, waardoor het een van de meest fascinerende landen in Zuid-Europa is. Het is een land waar u op dezelfde straathoek een Ottomaanse moskee, een joodse synagoge en katholieke en orthodoxe kerken kunt vinden.",
@@ -329,4 +329,4 @@ export const nlCopy = {
       contexts: ["home", "discipline"],
     },
   ],
-} as const;
+};
