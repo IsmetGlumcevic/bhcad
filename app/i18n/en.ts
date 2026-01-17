@@ -312,4 +312,4 @@ export const enCopy = {
       contexts: ["home", "discipline"],
     },
   ],
-};
+} as const;

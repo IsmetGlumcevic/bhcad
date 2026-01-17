@@ -329,4 +329,4 @@ export const nlCopy = {
       contexts: ["home", "discipline"],
     },
   ],
-};
+} as const;
