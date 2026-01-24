@@ -7,7 +7,7 @@ type PartnersSectionProps = {
 export function PartnersSection({ heading }: PartnersSectionProps) {
   return (
     <section className="bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-8">
         <h2 className="text-center text-5xl font-heading tracking-[5px] text-primary">
           {heading}
         </h2>

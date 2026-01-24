@@ -9,7 +9,7 @@ type TeamIntroProps = {
 export function TeamIntro({ heading, highlightLabel, description }: TeamIntroProps) {
   return (
     <section className="bg-white py-12 md:py-16">
-      <div className="mx-auto grid max-w-7xl items-center gap-4 px-4 md:grid-cols-2 md:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-[1600px] items-center gap-4 px-4 md:grid-cols-2 md:px-6 lg:px-8">
         <div>
           <h2 className="text-3xl font-heading font-semibold text-primary md:text-4xl">
             {heading}

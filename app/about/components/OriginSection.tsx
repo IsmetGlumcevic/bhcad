@@ -12,7 +12,7 @@ export function OriginSection({ content }: OriginSectionProps) {
       className="bg-gradient-to-b from-[#c9f2e5] via-[#c6f0e4] to-[#b4ebdc] py-16 md:py-24"
       aria-labelledby="origin-heading"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 md:grid-cols-2 md:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-[1600px] items-center gap-10 px-4 md:grid-cols-2 md:px-6 lg:px-8">
         <div className="order-2 md:order-1">
           <div className="shadow-2xl shadow-secondary/90">
             <Image

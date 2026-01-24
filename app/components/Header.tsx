@@ -115,7 +115,7 @@ export function Header({ navigation, labels }: HeaderProps) {
 
   return (
     <header className="relative z-20 bg-linear-to-r from-[#5c8a72] via-[#5bb59f] to-[#6ce0cc] text-white shadow-lg">
-      <div className="mx-auto flex h-[100px] max-w-7xl items-center justify-between px-4 md:px-6 lg:px-0">
+      <div className="mx-auto flex h-[100px] max-w-[1600px] items-center justify-between px-4 md:px-6 lg:px-0">
         <Logo priority />
         <div className="flex items-center gap-3 md:gap-8">
           <nav aria-label="Primary" className="hidden md:block">

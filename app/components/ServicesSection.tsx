@@ -68,7 +68,7 @@ export function ServicesSection({
       className="bg-white py-20 md:py-24 lg:py-28"
       aria-labelledby={`${id ?? "services"}-heading`}
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-5xl font-heading uppercase tracking-[0.35em] text-primary">
             {eyebrow}
