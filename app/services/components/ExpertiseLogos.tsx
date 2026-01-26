@@ -12,7 +12,7 @@ type ExpertiseLogosProps = {
 export function ExpertiseLogos({ logos, heading }: ExpertiseLogosProps) {
   return (
     <section className="bg-surface py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-4xl font-heading tracking-[5px] text-primary">
             {heading.intro}

@@ -8,8 +8,8 @@ type TeamGridProps = {
 export function TeamGrid({ members }: TeamGridProps) {
   return (
     <section className="bg-gradient-to-b from-[#e8f7f1] via-[#e9fbf7] to-[#c9f2e5] py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        <ul className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-8">
+        <ul className="grid grid-cols-2 gap-10 md:hidden">
           {members.map((member) => (
             <li key={member.name} className="">
               <div className="overflow-hidden rounded-xl bg-white shadow-xl shadow-emerald-300/40">
