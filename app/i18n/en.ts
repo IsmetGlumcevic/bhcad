@@ -160,6 +160,11 @@ export const enCopy = {
       },
       highlightLabel: "Our team",
     },
+    carousel: {
+      prev: "Prev",
+      next: "Next",
+      close: "Close",
+    },
   },
   services: [
     {

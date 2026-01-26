@@ -94,6 +94,7 @@ export default function HomeNl() {
         email={copy.contactPage.details.email}
         companyName={copy.footer.companyName}
         copyrightLabel={copy.footer.copyrightLabel}
+        homeHref={`/${locale}`}
       />
 
       <BackToTopLink target="#home" label={copy.home.backToTopLabel} />

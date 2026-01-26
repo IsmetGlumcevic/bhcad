@@ -4,7 +4,17 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { companyPhotos } from "../../data/company";
 
-export function CompanyCarousel() {
+type CompanyCarouselLabels = {
+  prev: string;
+  next: string;
+  close: string;
+};
+
+type CompanyCarouselProps = {
+  labels: CompanyCarouselLabels;
+};
+
+export function CompanyCarousel({ labels }: CompanyCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const totalSlides = companyPhotos.length;
@@ -46,7 +56,7 @@ export function CompanyCarousel() {
             onClick={goPrev}
             className="rounded-full border border-primary/20 px-4 py-2 transition hover:border-primary/60 hover:text-primary/80"
           >
-            Prev
+            {labels.prev}
           </button>
           <span>
             {activeIndex + 1} / {totalSlides}
@@ -56,7 +66,7 @@ export function CompanyCarousel() {
             onClick={goNext}
             className="rounded-full border border-primary/20 px-4 py-2 transition hover:border-primary/60 hover:text-primary/80"
           >
-            Next
+            {labels.next}
           </button>
         </div>
       </div>
@@ -67,14 +77,14 @@ export function CompanyCarousel() {
           role="dialog"
           aria-modal="true"
         >
-          <div className="relative w-full max-w-5xl">
+          <div className="relative w-full max-w-[900px]">
             <button
               type="button"
               onClick={() => setLightboxIndex(null)}
               className="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-2 text-sm font-semibold text-primary shadow"
-              aria-label="Close lightbox"
+              aria-label={labels.close}
             >
-              Close
+              {labels.close}
             </button>
             <div className="overflow-hidden rounded-2xl bg-white">
               <Image
@@ -82,7 +92,7 @@ export function CompanyCarousel() {
                 alt={companyPhotos[lightboxIndex].alt}
                 width={1200}
                 height={900}
-                className="h-auto w-full object-contain"
+                className="h-auto w-full max-h-[90vh] object-contain"
               />
             </div>
             <div className="mt-4 flex items-center justify-between text-sm font-semibold text-white">
@@ -91,7 +101,7 @@ export function CompanyCarousel() {
                 onClick={() => setLightboxIndex((index) => (index === null ? 0 : (index - 1 + totalSlides) % totalSlides))}
                 className="rounded-full border border-white/40 px-4 py-2 transition hover:border-white"
               >
-                Prev
+                {labels.prev}
               </button>
               <span>
                 {lightboxIndex + 1} / {totalSlides}
@@ -101,7 +111,7 @@ export function CompanyCarousel() {
                 onClick={() => setLightboxIndex((index) => (index === null ? 0 : (index + 1) % totalSlides))}
                 className="rounded-full border border-white/40 px-4 py-2 transition hover:border-white"
               >
-                Next
+                {labels.next}
               </button>
             </div>
           </div>

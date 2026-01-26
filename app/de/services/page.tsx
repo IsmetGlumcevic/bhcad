@@ -98,6 +98,7 @@ export default function ServicesPageDe() {
         email={copy.contactPage.details.email}
         companyName={copy.footer.companyName}
         copyrightLabel={copy.footer.copyrightLabel}
+        homeHref={`/${locale}`}
       />
     </div>
   );

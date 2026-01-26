@@ -76,13 +76,14 @@ export default function OurTeamPageDe() {
           description={copy.teamPage.intro.descriptionParts.intro}
         />
         <TeamGrid members={teamMembers} />
-        <CompanyCarousel />
+        <CompanyCarousel labels={copy.teamPage.carousel} />
       </main>
 
       <SiteFooter
         email={copy.contactPage.details.email}
         companyName={copy.footer.companyName}
         copyrightLabel={copy.footer.copyrightLabel}
+        homeHref={`/${locale}`}
       />
     </div>
   );

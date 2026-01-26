@@ -54,7 +54,7 @@ export function ServicesSection({
             <Icon className="h-[70px] w-[70px]" aria-hidden />
           </span>
         </div>
-        <h3 className="text-4xl font-heading font-semibold text-primary">
+        <h3 className="text-xl md:text-2xl xl:text-3xl font-heading font-semibold text-primary">
           {title}
         </h3>
         <p className="leading-relaxed text-muted">{body}</p>

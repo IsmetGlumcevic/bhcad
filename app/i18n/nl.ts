@@ -160,6 +160,11 @@ export const nlCopy = {
       },
       highlightLabel: "Ons team",
     },
+    carousel: {
+      prev: "Vorige",
+      next: "Volgende",
+      close: "Sluiten",
+    },
   },
   services: [
     {

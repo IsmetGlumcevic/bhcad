@@ -76,7 +76,7 @@ export default function OurTeamPage() {
           description={teamPage.intro.descriptionParts.intro}
         />
         <TeamGrid members={teamMembers} />
-        <CompanyCarousel />
+        <CompanyCarousel labels={teamPage.carousel} />
       </main>
 
       <SiteFooter

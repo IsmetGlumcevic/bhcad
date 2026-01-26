@@ -160,6 +160,11 @@ export const deCopy = {
       },
       highlightLabel: "Unser Team",
     },
+    carousel: {
+      prev: "Zurück",
+      next: "Weiter",
+      close: "Schließen",
+    },
   },
   services: [
     {

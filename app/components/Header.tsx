@@ -67,6 +67,7 @@ export function Header({ navigation, labels }: HeaderProps) {
   }, [pathname]);
 
   const languageLabel = getCopy(currentLocale).header.languageLabel;
+  const homeHref = currentLocale === defaultLocale ? "/" : `/${currentLocale}`;
 
   const buildLocaleHref = (locale: Locale) => {
     const prefix = locale === defaultLocale ? "" : `/${locale}`;
@@ -86,8 +87,8 @@ export function Header({ navigation, labels }: HeaderProps) {
     const linkBase =
       "rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide transition";
     const activeClass = isDesktop
-      ? "bg-white text-[#1f3f36]"
-      : "bg-gray-900 text-white";
+      ? "bg-white !text-[#1f3f36]"
+      : "bg-gray-900 !text-white";
     const inactiveClass = isDesktop
       ? "text-white/90 hover:bg-white/25"
       : "text-gray-900/80 hover:bg-black/10";
@@ -116,7 +117,7 @@ export function Header({ navigation, labels }: HeaderProps) {
   return (
     <header className="relative z-20 bg-linear-to-r from-[#5c8a72] via-[#5bb59f] to-[#6ce0cc] text-white shadow-lg">
       <div className="mx-auto flex h-[100px] max-w-[1600px] items-center justify-between px-4 md:px-6 lg:px-0">
-        <Logo priority />
+        <Logo priority href={homeHref} />
         <div className="flex items-center gap-3 md:gap-8">
           <nav aria-label="Primary" className="hidden md:block">
             <ul className="flex items-center gap-8 text-[17px] font-sans">
@@ -184,7 +185,7 @@ export function Header({ navigation, labels }: HeaderProps) {
           }`}
         >
           <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4">
-            <Logo className="h-10" />
+            <Logo className="h-10" href={homeHref} />
             <button
               type="button"
               aria-label={labels.closeMenu}
