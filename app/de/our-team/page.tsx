@@ -5,6 +5,7 @@ import { StructuredData } from "../../components/StructuredData";
 import { TeamHero } from "../../our-team/components/TeamHero";
 import { TeamIntro } from "../../our-team/components/TeamIntro";
 import { TeamGrid } from "../../our-team/components/TeamGrid";
+import { CompanyCarousel } from "../../our-team/components/CompanyCarousel";
 import { teamMembers } from "../../data/team";
 import { getCopy } from "../../i18n";
 import { ORGANIZATION_NAME, SITE_URL } from "../../lib/seo";
@@ -75,6 +76,7 @@ export default function OurTeamPageDe() {
           description={copy.teamPage.intro.descriptionParts.intro}
         />
         <TeamGrid members={teamMembers} />
+        <CompanyCarousel />
       </main>
 
       <SiteFooter

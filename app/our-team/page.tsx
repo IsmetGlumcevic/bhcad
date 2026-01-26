@@ -6,6 +6,7 @@ import { StructuredData } from "../components/StructuredData";
 import { TeamHero } from "./components/TeamHero";
 import { TeamIntro } from "./components/TeamIntro";
 import { TeamGrid } from "./components/TeamGrid";
+import { CompanyCarousel } from "./components/CompanyCarousel";
 import { teamMembers } from "../data/team";
 import { getCopy } from "../i18n";
 import { ORGANIZATION_NAME, SITE_URL } from "../lib/seo";
@@ -75,6 +76,7 @@ export default function OurTeamPage() {
           description={teamPage.intro.descriptionParts.intro}
         />
         <TeamGrid members={teamMembers} />
+        <CompanyCarousel />
       </main>
 
       <SiteFooter
