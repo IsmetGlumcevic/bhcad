@@ -119,7 +119,7 @@ export const enCopy = {
         "The ideas came to be for this very reason, we're happy to share our knowledge with you and help you with the whole organization process. We're open to any kind of realization of your projects like online support, drawing, processing drawings for production, processing data in ERP packages, administrative work, etc. We support a wide range of industries such as, technical industries (construction, the wood and steel industries, the mechanical industry, etc.)",
       ],
       image: {
-        src: "/assets/about-1.png",
+        src: "/assets/company/team2.jpg",
         alt: "bhCAD team",
         width: 1600,
         height: 900,

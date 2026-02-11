@@ -119,7 +119,7 @@ export const nlCopy = {
         "Om die reden is het idee ontstaan. We delen graag onze kennis en helpen u bij de volledige organisatie. We staan open voor allerlei vormen van projectrealisatie zoals online support, tekenwerk, het voorbereiden van tekeningen voor productie, gegevensverwerking in ERP-systemen, administratief werk, enzovoort. We ondersteunen een breed scala aan industrieën, zoals de bouw, hout- en staalindustrie en de machinebouw.",
       ],
       image: {
-        src: "/assets/about-1.png",
+        src: "/assets/company/team2.jpg",
         alt: "bhCAD team",
         width: 1600,
         height: 900,
