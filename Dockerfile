@@ -1,46 +1,48 @@
-# Multi-stage build to produce a small, production image
+# syntax=docker/dockerfile:1.7
 
-# 1) Base image
+# Multi-stage build optimized for Next.js standalone output
 FROM node:20-bookworm-slim AS base
-ENV NODE_ENV=production \
-    NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# 2) Install dependencies (with dev deps for build)
+# 1) Install dependencies (including optional deps for next/image -> sharp)
 FROM base AS deps
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci --include=dev
+    npm ci --include=dev --include=optional
 
-# 3) Build the Next.js app (standalone output)
+# 2) Build app with BuildKit cache for incremental Next builds
 FROM deps AS build
-ENV NODE_ENV=production \
-    NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 COPY . .
-RUN npm run build
+RUN --mount=type=cache,target=/app/.next/cache \
+    npm run build
 
-# 4) Production runner with standalone server
+# 3) Runtime image (small + secure)
 FROM base AS runner
-# Add a non-root user to run the app
-RUN useradd --create-home --uid 1001 nextjs
-USER nextjs
-
-# Copy the standalone server and required assets
-COPY --chown=nextjs:nextjs --from=build /app/.next/standalone ./
-COPY --chown=nextjs:nextjs --from=build /app/.next/static ./.next/static
-COPY --chown=nextjs:nextjs --from=build /app/public ./public
-
-# Runtime env
-ENV PORT=3000 \
+ENV NODE_ENV=production \
+    PORT=3000 \
     HOSTNAME=0.0.0.0 \
+    NEXT_SHARP_PATH=/app/node_modules/sharp \
     NEXT_TELEMETRY_DISABLED=1
+
+RUN groupadd --system --gid 1001 nodejs \
+    && useradd --system --uid 1001 --gid nodejs nextjs
+
+# Copy standalone server output and static assets
+COPY --from=build --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=build --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=build --chown=nextjs:nodejs /app/public ./public
+
+# next/image cache path must stay writable in runtime
+RUN mkdir -p /app/.next/cache/images \
+    && chown -R nextjs:nodejs /app/.next
+
+USER nextjs
 EXPOSE 3000
 
-# Healthcheck (basic)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
   CMD node -e "require('http').get({host: '127.0.0.1', port: process.env.PORT, path: '/'}, res => res.statusCode === 200 ? process.exit(0) : process.exit(1)).on('error', () => process.exit(1))" || exit 1
 
-# Start the standalone Next server
 CMD ["node", "server.js"]
-

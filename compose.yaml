@@ -1,12 +1,15 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: bhcad:latest
     ports:
       - "3000:3000"
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_SHARP_PATH: /app/node_modules/sharp
       PORT: "3000"
       HOSTNAME: 0.0.0.0
     restart: unless-stopped
