@@ -119,7 +119,7 @@ export const deCopy = {
         "Aus genau diesem Grund entstand die Idee – wir teilen unser Wissen gerne mit Ihnen und unterstützen Sie bei der gesamten Organisationsstruktur. Wir sind offen für jede Art der Umsetzung Ihrer Projekte, etwa Online-Support, Zeichnungserstellung, Aufbereitung von Zeichnungen für die Fertigung, Datenverarbeitung in ERP-Systemen, administrative Arbeiten usw. Wir unterstützen eine breite Palette von Branchen, wie technische Industrien (Bauwesen, Holz- und Stahlindustrie, Maschinenbau usw.).",
       ],
       image: {
-        src: "/assets/company/team2.jpg",
+        src: "/assets/about-1.png",
         alt: "bhCAD Team",
         width: 1600,
         height: 900,

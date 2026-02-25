@@ -7,10 +7,8 @@ export type TeamMember = {
 
 export const teamMembers: ReadonlyArray<TeamMember> = [
   { name: "Adis", src: "/assets/team-new/Adis.jpg", alt: "Adis", grayscale: false },
-  { name: "Ahmed", src: "/assets/team-new/Ahmed.jpg", alt: "Ahmed", grayscale: false },
   { name: "Albin", src: "/assets/team-new/Albin.jpg", alt: "Albin", grayscale: false },
   { name: "Amer", src: "/assets/team-new/Amer.jpg", alt: "Amer", grayscale: false },
-  { name: "Dino", src: "/assets/team-new/Dino.jpg", alt: "Dino", grayscale: false },
   { name: "Elma", src: "/assets/team-new/Elma.jpg", alt: "Elma", grayscale: false },
   { name: "Emir", src: "/assets/team-new/Emir.jpg", alt: "Emir", grayscale: false },
   { name: "Enes", src: "/assets/team-new/Enes.jpg", alt: "Enes", grayscale: false },
